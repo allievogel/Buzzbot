@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url (r'^chatbot/', include ('chatbot.urls')),
+    url (r'^', include ('chatbot.urls')),
 ]
