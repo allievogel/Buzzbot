@@ -7,16 +7,13 @@ import datetime
 def index(request):
     return render (request, 'index.html')
 
+
+
 def chat(request):
-    user_message = request.POST.get('msg')
+    user_message = request.POST.get('msg').lower()
     msg, animation = analyze_command(user_message)
-    print (msg, animation)
     return HttpResponse(json.dumps({"animation": animation, "msg": msg}), content_type="application/json")
 
-# def chat():
-#     user_message = request.POST.get('msg')
-#     msg, animation = analyze_command(user_message)
-#     return json.dumps({"animation": animation, "msg": msg})
 
 friends = []
 info = {"first_message": False,
