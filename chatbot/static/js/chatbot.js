@@ -1,4 +1,3 @@
-{% load staticfiles %}
 var ChatBot = {};
 
 //The server path will be used when sending the chat message to the server.
@@ -101,17 +100,16 @@ ChatBot.sendMessage = function () {
                     ChatBot.handleServerError("No result");
                 }
                 sendBtn.removeClass("loading");
-            }, "json");
+            });
             chatInput.val("")
         }
     }
 };
 
-$.ajax("/test",{
+$.ajax("test",{
     type: "POST",
-    data: {"msg": "hello"},
-    dataType: "json",
-    contentType: "application/json"})
+    data: {"msg": "hello"}
+    })
     .done(function (data) {
         console.log(data);
     });
@@ -133,12 +131,12 @@ ChatBot.write = function (message, sender, emoji) {
 
 //Setting boto's current animation according to the server response
 ChatBot.setAnimation = function (animation) {
-    $("#emoji").attr("src", "{% static 'images/boto/' + animation + ".gif"%}");
+    $("#emoji").attr("src", "static/images/boto/" + animation + ".gif");
     //Cut the current running animations when a new animations starts
     clearTimeout(ChatBot.animationTimeout);
     //Each animation plays for 4.5 seconds
     ChatBot.animationTimeout = setTimeout(function () {
-        $("#emoji").attr("src", "{% static 'images/boto/' + ChatBot.DEFAULT_ANIMATION + ".gif" %}")
+        $("#emoji").attr("src", "static/images/boto/" + ChatBot.DEFAULT_ANIMATION + ".gif")
     }, 4500);
 };
 
@@ -159,7 +157,7 @@ ChatBot.handleServerError = function (errorThrown) {
         actualError = " ( " + errorThrown + " ) ";
     }
     ChatBot.write("Sorry, there seems to be an error on the server. Let's talk later. " + actualError, "boto");
-    ChatBot.setAnimation("crying");
+    ChatBot.setAnimation("giggling");
     $(".chat-send").removeClass("loading");
 };
 
@@ -170,3 +168,62 @@ ChatBot.debugPrint = function (msg) {
 };
 
 ChatBot.start();
+
+//csrf cookie
+//Ajax CSRF.
+
+$(function() {
+
+
+    // This function gets cookie with a given name
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    /*
+    The functions below will create a header with csrftoken
+    */
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    function sameOrigin(url) {
+        // test that a given url is a same-origin URL
+        // url could be relative or scheme relative or absolute
+        var host = document.location.host; // host + port
+        var protocol = document.location.protocol;
+        var sr_origin = '//' + host;
+        var origin = protocol + sr_origin;
+        // Allow absolute or scheme relative URLs to same origin
+        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+            // or any other URL that isn't scheme relative or absolute i.e relative.
+            !(/^(\/\/|http:|https:).*/.test(url));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                // Send the token to same-origin, relative URLs only.
+                // Send the token only if the method warrants CSRF protection
+                // Using the CSRFToken value acquired earlier
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+});
