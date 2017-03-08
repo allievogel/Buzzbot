@@ -6,6 +6,7 @@ def index(request):
     return render (request, 'index.html')
 
 def test(request):
+    print('in')
     msg = request.POST.get('msg')
     return json.dumps(msg)
 

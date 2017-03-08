@@ -106,14 +106,6 @@ ChatBot.sendMessage = function () {
     }
 };
 
-$.ajax("test",{
-    type: "POST",
-    data: {"msg": "hello"}
-    })
-    .done(function (data) {
-        console.log(data);
-    });
-
 
 
 ChatBot.write = function (message, sender, emoji) {
@@ -174,7 +166,6 @@ ChatBot.start();
 
 $(function() {
 
-
     // This function gets cookie with a given name
     function getCookie(name) {
         var cookieValue = null;
@@ -226,4 +217,11 @@ $(function() {
         }
     });
 
+    $.ajax("test",{
+        type: "POST",
+        data: {"msg": "hello"}
+    })
+    .done(function (data) {
+        console.log(data);
+    });
 });
