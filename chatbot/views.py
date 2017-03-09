@@ -4,10 +4,18 @@ import json, random
 import requests
 import datetime
 
+friends = []
+info = {"first_message": False,
+        "your_name": ""}
+
 def index(request):
+    your_name("")
     return render (request, 'index.html')
 
-
+# def chat(request):
+#     user_message = request.POST.get('msg')
+#     msg, animation = analyze_command(user_message)
+#     return HttpResponse(json.dumps({"animation": animation, "msg": msg}), content_type="application/json")
 
 def chat(request):
     user_message = request.POST.get('msg').lower()
@@ -15,9 +23,6 @@ def chat(request):
     return HttpResponse(json.dumps({"animation": animation, "msg": msg}), content_type="application/json")
 
 
-friends = []
-info = {"first_message": False,
-        "your_name": ""}
 
 
 def get_weather(command):
@@ -56,7 +61,10 @@ def beam_up(command):
 
 
 def your_name(command):
+    #ORIGINAL!
+    # if "name is" in command or your_name == "":
     if "name is" in command:
+
         info['your_name'] = command.split("name is ")[1].split(" ")[0]
     else:
         info['your_name'] = command
@@ -158,12 +166,14 @@ def analyze_command(command):
     for term in all_terms:
         if all(x in command for x in term["words"]):
             return term["handler"](command), term["animation"]
-    if not info["first_message"]:
+
+    if info["your_name"] == "":
         info["first_message"] = True
+        your_name(command)
+        print(info['your_name'])
+
+
+
         return your_name(command), "dancing"
+
     return "Sorry, I'm not sure what you mean by that", "confused"
-
-
-
-
-
