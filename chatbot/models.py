@@ -14,7 +14,7 @@ class Users(models.Model):
 
 
 class Brief(models.Model):
-    
+
 
 
 class Questions(models.Model):

@@ -89,7 +89,7 @@ ChatBot.sendMessage = function () {
             sendBtn.addClass("loading");
             ChatBot.write(chatInput.val(), "me");
             //Sending the user line to the server using the POST method
-            $.post(ChatBot.SERVER_PATH + "/chat", {"msg": chatInput.val()}, function (result) {
+            $.post("/chat", {"msg": chatInput.val()}, function (result) {
                 console.log(result);
                 if (typeof result != "undefined" && "msg" in result) {
                     ChatBot.setAnimation(result.animation);
@@ -216,11 +216,5 @@ $(function() {
         }
     });
 
-    $.ajax("test",{
-        type: "POST",
-        data: {"msg": "hello"}
-    })
-    .done(function (data) {
-        console.log(data);
-    });
+
 });
