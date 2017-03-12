@@ -2,7 +2,6 @@ var ChatBot = {};
 
 //The server path will be used when sending the chat message to the server.
 //todo replace with your server path if needed
-ChatBot.SERVER_PATH = "http://localhost:8000";
 ChatBot.DEFAULT_ANIMATION = "waiting";
 //The animation timeout is used to cut the current running animations when a new animations starts
 ChatBot.animationTimeout;

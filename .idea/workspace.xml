@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5d1984d-1715-415f-bdb2-46b4d31bb8c6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/buzzbot.iml" afterPath="$PROJECT_DIR$/.idea/buzzbot.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/models.py" afterPath="$PROJECT_DIR$/chatbot/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/static/css/chatbot.css" afterPath="$PROJECT_DIR$/chatbot/static/css/chatbot.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/static/js/chatbot.js" afterPath="$PROJECT_DIR$/chatbot/static/js/chatbot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/views.py" afterPath="$PROJECT_DIR$/chatbot/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/templates/index.html" afterPath="$PROJECT_DIR$/chatbot/templates/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,9 +32,21 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chatbot/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chatbot/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,18 +54,28 @@
       <file leaf-file-name="chatbot.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chatbot/static/css/chatbot.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chatbot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chatbot/static/js/chatbot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="46" lean-forward="false" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chatbot/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="-255">
+              <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -67,16 +91,6 @@
               <folding>
                 <element signature="e#641#682#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chatbot.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chatbot/static/js/chatbot.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-581">
-              <caret line="161" column="16" lean-forward="true" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -109,8 +123,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -120,6 +134,17 @@
       <find>test</find>
       <find>$.ajax</find>
       <find>chat</find>
+      <find>chat-send clickable</find>
+      <find>chat-window-header</find>
+      <find>chat-box</find>
+      <find>chat-box shadowed</find>
+      <find>html</find>
+      <find>Chat input</find>
+      <find>chat-sc</find>
+      <find>send</find>
+      <find>header</find>
+      <find>shadowed</find>
+      <find>chat-send</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,14 +154,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/buzzbot/urls.py" />
-        <option value="$PROJECT_DIR$/chatbot/models.py" />
         <option value="$PROJECT_DIR$/chatbot/admin.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/chatbot/urls.py" />
         <option value="$PROJECT_DIR$/buzzbot/settings.py" />
-        <option value="$PROJECT_DIR$/chatbot/templates/index.html" />
-        <option value="$PROJECT_DIR$/chatbot/static/js/chatbot.js" />
         <option value="$PROJECT_DIR$/chatbot/views.py" />
+        <option value="$PROJECT_DIR$/chatbot/templates/BuzzBot.html" />
+        <option value="$PROJECT_DIR$/chatbot/static/js/chatbot.js" />
+        <option value="$PROJECT_DIR$/chatbot/static/css/chatbot.css" />
+        <option value="$PROJECT_DIR$/chatbot/templates/index.html" />
+        <option value="$PROJECT_DIR$/chatbot/models.py" />
       </list>
     </option>
   </component>
@@ -147,8 +174,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="226" />
-    <option name="y" value="57" />
+    <option name="x" value="311" />
+    <option name="y" value="23" />
     <option name="width" value="989" />
     <option name="height" value="804" />
   </component>
@@ -576,7 +603,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="226" y="57" width="989" height="804" extended-state="0" />
+    <frame x="311" y="23" width="989" height="804" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20802534" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -789,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatbot/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chatbot/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -806,10 +826,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatbot/static/css/chatbot.css">
+    <entry file="file://$PROJECT_DIR$/chatbot/templates/BuzzBot.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="165">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatbot/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chatbot/static/js/chatbot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="46" lean-forward="false" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buzzbot/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -824,36 +870,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buzzbot/settings.py">
+    <entry file="file://$PROJECT_DIR$/chatbot/static/css/chatbot.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chatbot/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chatbot/static/js/chatbot.js">
+    <entry file="file://$PROJECT_DIR$/chatbot/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-581">
-          <caret line="161" column="16" lean-forward="true" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chatbot/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="240">
+          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

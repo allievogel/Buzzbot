@@ -1,6 +1,16 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+
 body{
-    background-image:url('../images/bg.png');
+    background-color: #FFFFFF;
     font-family:'Roboto Mono'
+}
+
+.buzzbot-title{
+    padding-top: 0px;
+
 }
 
 .clickable{
@@ -11,12 +21,6 @@ body{
    visibility:hidden;
 }
 
-.shadowed{
- -webkit-box-shadow: 3px 3px 23px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    3px 3px 23px 0px rgba(50, 50, 50, 0.75);
-		 box-shadow:         3px 3px 23px 0px rgba(50, 50, 50, 0.75);
-}
-
 .chat-box{
 	display: inline-block;
     border-radius: 8px;
@@ -25,23 +29,14 @@ body{
     transform: translateY(-50%) translateX(-50%);
     left: 50%;
     position: absolute;
-    background-color:#B0C4DE;
-}
-
-.chat-window-header{
-    font-size: 20px;
-    line-height: 1.6em;
-
-   background: rgb(0, 0, 0); /* The Fallback */
-   background: rgba(0, 0, 0, 0.8);
-
+    background-color:#FFFFFF;
 }
 
 .chat-screen{
 	width:500px;
-	height:400px;
+	height:600px;
 	background-color:white;
-	border: 1px solid #999;
+	border: 3px solid #28C0FA;
 	padding: 10px;
     overflow-y: scroll;
 }
@@ -60,20 +55,22 @@ body{
 	width: 380px;
     font-size: 20px;
     margin-top: 10px;
-    border: 1px solid #999;
+    border: 3px solid #28C0FA;
     outline: none;
 
 }
 
 .chat-send{
-	padding:5px 30px;
 	display:inline-block;
-	background-color:#00FF7F;
+	background-color:#FFEC13;
 	vertical-align: bottom;
+    width: 110px;
+    height: 36px;
+
 }
 
 .chat-send.loading{
-    color: #B0C4DE;
+    color: #28C0FA;
 }
 
 .orb-holder{
@@ -119,4 +116,18 @@ body{
     bottom: 0px;
     left: 0px;
     margin: 5px;
+}
+
+.buzzbot-title{
+    position: center;
+    font-size: 50px;
+    color: black;
+}
+
+.main-title{
+    height:30px;
+    width: 500px;
+    background-color: #FFEC13;
+    padding: 0px;
+    margin: 0px;
 }
