@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5d1984d-1715-415f-bdb2-46b4d31bb8c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatbot/static/images/Buzzbot Icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatbot/static/images/blue-geometric-wallpaper-10.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/chatbot/templates/BuzzBot.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/models.py" afterPath="$PROJECT_DIR$/chatbot/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/static/css/chatbot.css" afterPath="$PROJECT_DIR$/chatbot/static/css/chatbot.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/templates/index.html" afterPath="$PROJECT_DIR$/chatbot/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/views.py" afterPath="$PROJECT_DIR$/chatbot/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -589,6 +582,14 @@
       <option name="presentableId" value="Default" />
       <updated>1488801153930</updated>
     </task>
+    <task id="LOCAL-00001" summary="New CSS changes">
+      <created>1489396864771</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1489396864771</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -640,6 +641,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="New CSS changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="New CSS changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
