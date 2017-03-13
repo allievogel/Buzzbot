@@ -21,20 +21,20 @@ class Brief(models.Model):
         return self.brief_type
 
 
-class Questions(models.Model):
-    question_ID = models.IntegerField(default=0)
-    keyword_goal = models.CharField(max_length=200)
-    question_text = models.CharField(max_length=200)
+#class Questions(models.Model):
+    #question_ID = models.IntegerField(default=0)
+    #keyword_goal = models.CharField(max_length=200)
+    #question_text = models.CharField(max_length=200)
 
     def __str__(self):
         return self.keyword_goal
 
-class Answers(models.Model):
-    question_ID = models.ForeignKey(Questions, on_delete=models.CASCADE)
-    answer_text = models.CharField(max_length=200)
+#class Answers(models.Model):
+    #question_ID = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    #answer_text = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.question_ID
+        return self.question_ID, #self.answer_text
 
 
 

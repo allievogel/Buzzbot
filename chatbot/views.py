@@ -24,7 +24,6 @@ def chat(request):
 
 
 
-
 def get_weather(command):
     if "in" not in command:
         return "Please repeat the question, and mention the city!"
