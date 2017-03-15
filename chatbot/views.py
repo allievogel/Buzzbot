@@ -61,6 +61,9 @@ def beam_up(command):
 def get_email(command):
     return "Yallah, let's go. What's your email address?"
 
+def respond_email(command):
+    return "Great! We are excited to work with you. What is the name of the company you are working with?"
+
 def your_name(command):
     #ORIGINAL!
     # if "name is" in command or your_name == "":
@@ -117,6 +120,13 @@ any_terms = [
         "handler": get_email,
         "animation": "ok"
     },
+
+    {
+        "words": ["@"],
+        "handler": respond_email,
+        "animation": "ok"
+    },
+
 ]
 all_terms = [
     {
