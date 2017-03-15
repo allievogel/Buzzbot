@@ -21,7 +21,8 @@ ChatBot.start = function () {
         ChatBot.bindErrorHandlers();
         ChatBot.initSpeechConfig();
         ChatBot.bindUserActions();
-        ChatBot.write("Hello, My name is Boto. What is yours?", "boto");
+        ChatBot.showImage();
+        ChatBot.write("Hello there! I’d love to chat with you about your creative brief. Let’s start with an introduction: My name is Buzz, what is your name?", "Buzzbot");
     });
 };
 
@@ -54,7 +55,7 @@ ChatBot.bindUserActions = function () {
         }
     });
 
-    $(".chat-send").unbind("click").bind("click", function (e) {
+    $("send-button").unbind("click").bind("click", function (e) {
         ChatBot.sendMessage();
     });
 
@@ -63,6 +64,13 @@ ChatBot.bindUserActions = function () {
         $(this).toggleClass("on");
         ChatBot.speechEnabled = $(this).is(".on") ? false : true;
     });
+};
+
+//This function calls the image
+ChatBot.showImage = function (){
+    var img = document.createElement("IMG");
+    img.src = "{% static 'boto/BuzzbotIcon.png' %}";
+    document.getElementById('imageDiv').appendChild(img);
 };
 
 //Initializeing HTML5 speech synthesis config
@@ -80,7 +88,7 @@ ChatBot.initSpeechConfig = function () {
 
 //The core function of the app, sends the user's line to the server and handling the response
 ChatBot.sendMessage = function () {
-    var sendBtn = $(".chat-send");
+    var sendBtn = $("chat-send");
     //Do not allow sending a new message while another is being processed
     if (!sendBtn.is(".loading")) {
         var chatInput = $(".chat-input");
@@ -93,7 +101,7 @@ ChatBot.sendMessage = function () {
                 console.log(result);
                 if (typeof result != "undefined" && "msg" in result) {
                     ChatBot.setAnimation(result.animation);
-                    ChatBot.write(result.msg, "boto");
+                    ChatBot.write(result.msg, "Buzzbot");
                 } else {
                     //The server did not erred but we got an empty result (handling as error)
                     ChatBot.handleServerError("No result");
@@ -109,7 +117,7 @@ ChatBot.sendMessage = function () {
 
 ChatBot.write = function (message, sender, emoji) {
     //Only boto's messages should be heard
-    if (sender == "boto" && ChatBot.speechEnabled) {
+    if (ChatBot.speechEnabled) {
         ChatBot.speak(message);
     }
     var chatScreen = $(".chat-screen");
@@ -147,9 +155,9 @@ ChatBot.handleServerError = function (errorThrown) {
     if (ChatBot.debugMode) {
         actualError = " ( " + errorThrown + " ) ";
     }
-    ChatBot.write("Sorry, there seems to be an error on the server. Let's talk later. " + actualError, "boto");
+    ChatBot.write("Sorry, there seems to be an error on the server. Let's talk later. " + actualError, "Buzzbot");
     ChatBot.setAnimation("giggling");
-    $(".chat-send").removeClass("loading");
+    $("send-button").removeClass("loading");
 };
 
 ChatBot.debugPrint = function (msg) {

@@ -9,27 +9,63 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <!-- <link rel="stylesheet" href="../static/chatbot.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/chatbot.css' %}" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:900,700,400' rel='stylesheet' type='text/css'>
 </head>
   <body>
 			<!-- CHAT HEADER -->
-            <div class = chat-header>
-            <p class = buzzbot-title>BUZZBOT</p>
-            <p class = subheader>The creative brief robot</p>
+            <div class = "container" id = "chat-header" >
+            <div class = "row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                <p class = buzzbot-title>BUZZBOT</p>
+                <p class = subheader>The creative brief robot</p>
             </div>
-			<!-- BOTO PLACEHOLDER -->
-			<!-- CHAT SCREEN -->
-			<div class="chat-screen">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+            </div>
+            </div>
+            </div>
+
+
+			<div class = "container">
+                <div class = "row">
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+            <!-- PREVIEW SCREEN -->
+                     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			            <div class="user-preview">
+                            <div class = "progress-size">
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 60%;"></div>
+                            </div>
+                                <div class="progress-text">Good Work!</br>You are <strong>60%</strong> of the way there!</div>
+                            </div>
+                            <button type="button" class="btn btn-default download-button">Download</button>
+                        </div>
+                     </div>
+            <!-- CHAT SCREEN -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="chat-screen">
+                            <div id="imageDiv"></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 			</div>
-			<!-- USER INPUT -->
-			<input title="Chat input" class="chat-input" />
-			<div class="chat-send clickable">SEND</div>
+
+                        			<!-- USER INPUT -->
+            <div class = "container">
+                <div class = "row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+			            <input title="Chat input" class="chat-input"/>
+                            <button type="button" class="btn btn-default send-button">SEND</button>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                </div>
+            </div>
+
 
 	</body>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="{% static 'js/chatbot.js' %}" type="text/javascript"></script>
-
-
-</html>
+    </html>

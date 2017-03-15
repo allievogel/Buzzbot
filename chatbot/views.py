@@ -58,6 +58,8 @@ def my_name(command):
 def beam_up(command):
     return "I just can't do it Captain, I just don't have the power!"
 
+def get_email(command):
+    return "Yallah, let's go. What's your email address?"
 
 def your_name(command):
     #ORIGINAL!
@@ -67,7 +69,8 @@ def your_name(command):
         info['your_name'] = command.split("name is ")[1].split(" ")[0]
     else:
         info['your_name'] = command
-    return "Nice to meet you, {}".format(info['your_name'])
+    return "Great to meet you, {}. Are you ready to get started? ".format(info['your_name'])
+
 
 
 def what_time(command):
@@ -107,6 +110,12 @@ any_terms = [
         "words": ["dog", "dogs"],
         "handler": love_dogs,
         "animation": "dog"
+    },
+
+    {
+        "words": ["yes", "ready", "yallah"],
+        "handler": get_email,
+        "animation": "ok"
     },
 ]
 all_terms = [
@@ -157,7 +166,6 @@ all_terms = [
     },
 ]
 
-
 def analyze_command(command):
     for term in any_terms:
         if any(x in command for x in term["words"]):
@@ -175,4 +183,4 @@ def analyze_command(command):
 
         return your_name(command), "dancing"
 
-    return "Sorry, I'm not sure what you mean by that", "confused"
+    return "Hmmm, I'm not that smart of a robot yet. Let's try again!", "confused"
