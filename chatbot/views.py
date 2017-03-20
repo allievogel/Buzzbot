@@ -30,6 +30,7 @@ brief1.append({"question":"Great. Now upload (by drag and dropping) any files yo
 brief1.append({"question":"We are really excited to speak with you! Now that we got know your needs a little better, let\'s schedule a time to discuss this brief."})
 brief1.append({"question":"We are all set to chat. You\'ll get an email confirmation for our appointment to connect at ... Looking forward to it."})
 
+answerArr = ["objective","audience","timeline","format","concept","detail","feeling","schedule"]
 def index(request):
     your_name("")
     return render (request, 'index.html')
@@ -56,47 +57,50 @@ def chat (request):
         u.company_name=msg
         u.save()
 
+    elif currentQuestion==3:
+        print('updating answer table'+str(user_id))
+        a=Answer(user_id=User.objects.get(pk=user_id),objective=msg)
+        a.save()
+
+    elif currentQuestion==4:
+        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
+        a.audience = msg
+        a.save()
+
+    elif currentQuestion==5:
+        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
+        a.timeline = msg
+        a.save()
+    elif currentQuestion==6:
+        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
+        a.format= msg
+        a.save()
+    elif currentQuestion==7:
+        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
+        a.concept= msg
+        a.save()
+
+    elif currentQuestion == 8:
+        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
+        a.detail = msg
+        a.save()
+
+    elif currentQuestion == 9:
+        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
+        a.feeling = msg
+        a.save()
+
+    elif currentQuestion == 10:
+        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
+        a.schedule = msg
+        a.save()
+        currentQuestion=0
+
+
+
     return HttpResponse(json.dumps({"msg": brief1[currentQuestion]["question"], "user_id":user_id}), content_type="application/json")
 
-def get_weather(command):
-    if "in" not in command:
-        return "Please repeat the question, and mention the city!"
-    city = command.split("in ")[1].split("?")[0]
-    url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid=40badce35dd91ee9ddb8bac02e3e6967".format(city)
-    response = requests.get(url)
-    data = response.json()
-    print(data)
-    return "Right now in {} I see...{}".format(city, data["weather"][0]["description"])
 
-
-def curse(command):
-    return "I'm a gentle robot! don't curse!"
-
-
-def love_dogs(command):
-    return "I love dogs so much! Please change the code and add a dog for me!"
-
-
-def distracted(command):
-    return "Oops, what did you ask me to do? I got too afraid when you talked about Dana!"
-
-
-def how_much_money(command):
-    return "I have 50 million shekels!"
-
-
-def my_name(command):
-    return "My name is boto, weren't you listening?"
-
-
-def beam_up(command):
-    return "I just can't do it Captain, I just don't have the power!"
-
-def get_email(command):
-    return "Yallah, let's go. What's your email address?"
-
-def respond_email(command):
-    return "Great! We are excited to work with you. What is the name of the company you are working with?"
 
 def your_name(command):
     #ORIGINAL!
@@ -110,105 +114,7 @@ def your_name(command):
 
 
 
-def what_time(command):
-    return 'The {} is {:%H:%M}.'.format("time", datetime.datetime.now())
 
-
-def add_friends(command):
-    friends.append(command.split("add ")[1].split(" ")[0])
-    return "No problem, added new friend!"
-
-
-def who_are_friends(command):
-    friends_set = set(friends)
-    if friends_set:
-        if len(friends_set) > 1:
-            return "Right now all my friends are {}".format(" and ".join(friends_set))
-        else:
-            return "Right now my only friend is {}".format(list(friends_set)[0])
-    return "I don't have any friends!"
-
-
-
-
-any_terms = [
-    {
-        "words": ["fuck", "shit", "hell", "bitch", "freaking"],
-        "handler": curse,
-        "animation": "no"
-
-    },
-    {
-        "words": ["dana"],
-        "handler": distracted,
-        "animation": "afraid"
-    },
-    {
-        "words": ["dog", "dogs"],
-        "handler": love_dogs,
-        "animation": "dog"
-    },
-
-    {
-        "words": ["yes", "ready", "yallah"],
-        "handler": get_email,
-        "animation": "ok"
-    },
-
-    {
-        "words": ["@"],
-        "handler": respond_email,
-        "animation": "ok"
-    },
-
-]
-all_terms = [
-    {
-        "words": ["much", "money"],
-        "handler": how_much_money,
-        "animation": "money"
-    },
-    {
-        "words": ["my", "name", "is"],
-        "handler": your_name,
-        "animation": "inlove"
-    },
-    {
-        "words": ["what", "your", "name"],
-        "handler": my_name,
-        "animation": "giggling"
-    },
-    {
-        "words": ["what", "time"],
-        "handler": what_time,
-        "animation": "waiting"
-    },
-    {
-        "words": ["add", "friends"],
-        "handler": add_friends,
-        "animation": "excited"
-    },
-    {
-        "words": ["who", "friends"],
-        "handler": who_are_friends,
-        "animation": "laughing"
-    },
-    {
-        "words": ["beam", "me","up"],
-        "handler": beam_up,
-        "animation": "no"
-    },
-    {
-        "words": ["how", "weather"],
-        "handler": get_weather,
-        "animation": "ok"
-    },
-    {
-        "words": ["what", "weather"],
-        "handler": get_weather,
-        "animation": "ok"
-    },
-]
 
 def analyze_command(command):
     for term in any_terms:
