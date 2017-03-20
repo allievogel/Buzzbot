@@ -24,6 +24,7 @@ ChatBot.start = function () {
         ChatBot.bindErrorHandlers();
         ChatBot.initSpeechConfig();
         ChatBot.bindUserActions();
+        ChatBot.userId;
         ChatBot.write("Hello there! I’d love to chat with you about your creative brief. Let’s start with an introduction: My name is Buzz, what is your name?", "Buzzbot");
     });
 };
@@ -164,11 +165,14 @@ ChatBot.sendMessage = function () {
             sendBtn.addClass("loading");
             ChatBot.write(chatInput.val(), "me");
             //Sending the user line to the server using the POST method
-            $.post("/chat", {"msg": chatInput.val(),"question_num":ChatBot.currentQuestion}, function (result) {
+            console.log('before post'+ChatBot.userId);
+            $.post("/chat", {"msg": chatInput.val(),"question_num":ChatBot.currentQuestion,"user_id":ChatBot.userId}, function (result) {
                 console.log(result);
                 if (typeof result != "undefined" && "msg" in result) {
                     ChatBot.setAnimation(result.animation);
                     ChatBot.write(result.msg, "Buzzbot");
+                    ChatBot.userId=result.user_id;
+                    console.log('callback post'+ChatBot.userId)
                 } else {
                     //The server did not erred but we got an empty result (handling as error)
                     ChatBot.handleServerError("No result");

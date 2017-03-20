@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import json, random
 import requests
 import datetime
+from .models import User, Answer
 
 friends = []
 info = {"first_message": False,
@@ -14,7 +15,7 @@ name = ""
 answer3 = ""
 
 brief1 = []
-brief1.append({"question":"Great to meet you, ... Are you ready to get started?"})
+brief1.append({"question":"Great! What is your email address?"})
 brief1.append({"question":"Great! We are excited to work with you. What is the name of the company you are working with?"})
 brief1.append({"question":"Tell me a little bit about your project: What is the main objective?"})
 brief1.append({"question":"Nice, I'm excited to get started. Now, who is your target audience?"})
@@ -33,10 +34,29 @@ def index(request):
     your_name("")
     return render (request, 'index.html')
 
+
+
 def chat (request):
-    user_message = request.POST.get('msg').lower()
+    msg = request.POST.get('msg').lower()
+    user_id=request.POST.get('user_id')
     currentQuestion = int(request.POST.get('question_num'))
-    return HttpResponse(json.dumps({"msg": brief1[currentQuestion]["question"]}), content_type="application/json")
+    if currentQuestion == 0:
+        u = User(user_name=msg)
+        u.save()
+        user_id = u.id
+        print("firsttime"+str(user_id))
+    elif currentQuestion == 1:
+        print("second time"+str(user_id))
+        u=User.objects.get(pk=user_id)
+        u.email=msg
+        u.save()
+
+    elif currentQuestion == 2:
+        u = User.objects.get(pk=user_id)
+        u.company_name=msg
+        u.save()
+
+    return HttpResponse(json.dumps({"msg": brief1[currentQuestion]["question"], "user_id":user_id}), content_type="application/json")
 
 def get_weather(command):
     if "in" not in command:
