@@ -8,21 +8,35 @@ friends = []
 info = {"first_message": False,
         "your_name": ""}
 
+counter = 0
+current_user = ""
+name = ""
+answer3 = ""
+
+brief1 = []
+brief1.append({"question":"Great to meet you, ... Are you ready to get started?"})
+brief1.append({"question":"Great! We are excited to work with you. What is the name of the company you are working with?"})
+brief1.append({"question":"Tell me a little bit about your project: What is the main objective?"})
+brief1.append({"question":"Nice, I'm excited to get started. Now, who is your target audience?"})
+brief1.append({"question":"When are you looking to have this project completed by? Keep in mind that for most projects we need around a month to get it just right for you."})
+brief1.append({"question":"Cool. Can\'t wait to work together. Let\'s speak about your project type:"})
+brief1.append({"question":"Yes! We love working on ... What format are you looking to have this in?"})
+brief1.append({"question":"Awesome. We are making note of that! Now let\'s get down to the details: can you describe your project\'s concept more in-depth?"})
+brief1.append({"question":"Noted! Is there anything specific you want to highlight?"})
+brief1.append({"question":"Tell me about what you want your users to feel when they see your site?"})
+brief1.append({"question":"Voila! Which of these photos best resonates?"})
+brief1.append({"question":"Great. Now upload (by drag and dropping) any files you want to include for us?"})
+brief1.append({"question":"We are really excited to speak with you! Now that we got know your needs a little better, let\'s schedule a time to discuss this brief."})
+brief1.append({"question":"We are all set to chat. You\'ll get an email confirmation for our appointment to connect at ... Looking forward to it."})
+
 def index(request):
     your_name("")
     return render (request, 'index.html')
 
-# def chat(request):
-#     user_message = request.POST.get('msg')
-#     msg, animation = analyze_command(user_message)
-#     return HttpResponse(json.dumps({"animation": animation, "msg": msg}), content_type="application/json")
-
-def chat(request):
+def chat (request):
     user_message = request.POST.get('msg').lower()
-    msg, animation = analyze_command(user_message)
-    return HttpResponse(json.dumps({"animation": animation, "msg": msg}), content_type="application/json")
-
-
+    currentQuestion = int(request.POST.get('question_num'))
+    return HttpResponse(json.dumps({"msg": brief1[currentQuestion]["question"]}), content_type="application/json")
 
 def get_weather(command):
     if "in" not in command:

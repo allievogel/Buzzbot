@@ -11,6 +11,9 @@ ChatBot.speechConfig;
 //Or when the user clicks the mute button
 ChatBot.speechEnabled = true;
 
+ChatBot.currentQuestion = 0;
+ChatBot.briefLength = 13;
+
 //TODO: remove for production
 ChatBot.debugMode = true;
 
@@ -21,7 +24,6 @@ ChatBot.start = function () {
         ChatBot.bindErrorHandlers();
         ChatBot.initSpeechConfig();
         ChatBot.bindUserActions();
-        ChatBot.showImage();
         ChatBot.write("Hello there! I’d love to chat with you about your creative brief. Let’s start with an introduction: My name is Buzz, what is your name?", "Buzzbot");
     });
 };
@@ -55,7 +57,7 @@ ChatBot.bindUserActions = function () {
         }
     });
 
-    $("send-button").unbind("click").bind("click", function (e) {
+    $(".send-button").unbind("click").bind("click", function (e) {
         ChatBot.sendMessage();
     });
 
@@ -67,11 +69,76 @@ ChatBot.bindUserActions = function () {
 };
 
 //This function calls the image
-ChatBot.showImage = function (){
-    var img = document.createElement("IMG");
-    img.src = "{% static 'boto/BuzzbotIcon.png' %}";
-    document.getElementById('imageDiv').appendChild(img);
+// ChatBot.showImage = function (){
+//     var previewPhoto = $("<div/>")
+//         .addClass("Botphoto")
+//         .attr("id", "smallBot");
+//
+//     var botIcon = $("<div/>")
+//         .addClass("botPic")
+//         // .attr("id", "buzzPic");
+//     $(previewPhoto).append(botIcon);
+//     // $(".chat-screen").append(previewPhoto);
+//     botIcon.html('<img src="./static/images/buzzbotlogo.png" height="64px" width="64px">');
+//     return '<img src="./static/images/buzzbotlogo.png" height="64px" width="64px">';
+//
+// };
+//
+// ChatBot.showImage();
+
+
+//Moving the progress bar forward with each question answered
+ChatBot.move = function () {
+    var elem = $("#myBar");
+    var width = 1;
+    var id = setInterval(frame, 14);
+
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
 };
+
+//Moving percentage with animation
+ ChatBot.percentageCalc = function () {
+    var calcElem = $("#myChange");
+    var animator = new PercentageAnimator();
+       var timerAnim = new timer ();
+    animator.curPercentage = 0;
+    animator.animate(100);
+}
+
+function timer () {
+    if (animator.curPercentage < animator.targetPercentage) {
+        animator.curPercentage += 1;
+    } else if (animator.curPercentage > animator.targetPercentage) {
+        animator.curPercentage -= 1;
+    }
+
+    $(animator.outputSelector).text(animator.curPercentage + "%");
+
+    if (animator.curPercentage != animator.targetPercentage) {
+        setTimeout(timer, animator.animationSpeed)
+    }
+}
+
+function PercentageAnimator () {
+    this.animationSpeed = 80;
+    this.curPercentage = 0;
+    this.targetPercentage = 0;
+    this.outputSelector = ".countPercentage";
+
+    this.animate = function (percentage) {
+        this.targetPercentage = percentage;
+        setTimeout(timer, this.animationSpeed);
+    };
+
+    $("myChange").animator.curPercentage;
+}
 
 //Initializeing HTML5 speech synthesis config
 ChatBot.initSpeechConfig = function () {
@@ -88,7 +155,7 @@ ChatBot.initSpeechConfig = function () {
 
 //The core function of the app, sends the user's line to the server and handling the response
 ChatBot.sendMessage = function () {
-    var sendBtn = $("chat-send");
+    var sendBtn = $(".send-button");
     //Do not allow sending a new message while another is being processed
     if (!sendBtn.is(".loading")) {
         var chatInput = $(".chat-input");
@@ -97,7 +164,7 @@ ChatBot.sendMessage = function () {
             sendBtn.addClass("loading");
             ChatBot.write(chatInput.val(), "me");
             //Sending the user line to the server using the POST method
-            $.post("/chat", {"msg": chatInput.val()}, function (result) {
+            $.post("/chat", {"msg": chatInput.val(),"question_num":ChatBot.currentQuestion}, function (result) {
                 console.log(result);
                 if (typeof result != "undefined" && "msg" in result) {
                     ChatBot.setAnimation(result.animation);
@@ -106,6 +173,10 @@ ChatBot.sendMessage = function () {
                     //The server did not erred but we got an empty result (handling as error)
                     ChatBot.handleServerError("No result");
                 }
+                ChatBot.currentQuestion++;
+                console.log((parseFloat(ChatBot.currentQuestion) / parseFloat(ChatBot.briefLength) * 100) + "%")
+                $("#myBar").width((parseFloat(ChatBot.currentQuestion) / parseFloat(ChatBot.briefLength) * 100) + "%")
+
                 sendBtn.removeClass("loading");
             });
             chatInput.val("")
@@ -115,17 +186,23 @@ ChatBot.sendMessage = function () {
 
 
 
-ChatBot.write = function (message, sender, emoji) {
+ChatBot.write = function (message, sender) {
     //Only boto's messages should be heard
     if (ChatBot.speechEnabled) {
         ChatBot.speak(message);
     }
+    var image;
+    if (sender == "Buzzbot"){
+        image = '<div class = "buzzIcon"><img src="./static/images/BuzzbotIcon.png" height="64px" width="64px"></div>'
+    }else{
+        image = '<img src="./static/images/buzzbotlogo.png" height="64px" width="64px">'
+    }
     var chatScreen = $(".chat-screen");
-    sender = $("<span />").addClass("sender").addClass(sender).text(sender + ":");
+    sender = $("<span />").addClass("sender").addClass(sender).html(image);
     var msgContent = $("<span />").addClass("msg").text(message);
     var newLine = $("<div />").addClass("msg-row");
-    newLine.append(sender).append(msgContent);
     chatScreen.append(newLine);
+    newLine.before(sender).append(msgContent);
 };
 
 //Setting boto's current animation according to the server response
@@ -157,7 +234,7 @@ ChatBot.handleServerError = function (errorThrown) {
     }
     ChatBot.write("Sorry, there seems to be an error on the server. Let's talk later. " + actualError, "Buzzbot");
     ChatBot.setAnimation("giggling");
-    $("send-button").removeClass("loading");
+    $(".send-button").removeClass("loading");
 };
 
 ChatBot.debugPrint = function (msg) {

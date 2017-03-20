@@ -77,12 +77,22 @@ body{
     outline: none;
 }
 
+.send-button:hover {
+    background-color: #A8DBF1;
+}
+
+.send-button:active {
+    background-color: #A8DBF1;
+}
+
 .send-button{
     display:inline-block;
 	background-color:#FFEC13;
 	vertical-align: bottom;
     width: 90px;
     height: 36px;
+    border: solid 2px #FFEC13;
+
 }
 
 .chat-send.loading{
@@ -138,6 +148,15 @@ body{
     position: center;
     margin-left: 75px;
     margin-top: 100px;
+    border: solid 2px #FFEC13;
+}
+
+.download-button:hover {
+    background-color: #A8DBF1;
+}
+
+.download-button:active {
+    background-color: #A8DBF1;
 }
 
 .progress-size{
@@ -150,4 +169,25 @@ body{
 
 .progress-text{
     text-align: center;
+}
+
+.msg-row {
+    padding: 10px;
+    background-color: #74C8F3;
+    border-radius: 25px;
+    direction: ltr;
+}
+
+.msg-row. sender.me {
+    padding: 10px;
+    background-color: #ADDEF4;
+    border-radius: 25px;
+    direction: rtl;
+}
+
+.msg-row {
+    margin-bottom: 20px;
+}
+
+.buzzIcon{
 }
