@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5d1984d-1715-415f-bdb2-46b4d31bb8c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatbot/static/images/AllieIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatbot/static/images/buzzicon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chatbot/templates/creative.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/static/css/chatbot.css" afterPath="$PROJECT_DIR$/chatbot/static/css/chatbot.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/static/js/chatbot.js" afterPath="$PROJECT_DIR$/chatbot/static/js/chatbot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/templates/index.html" afterPath="$PROJECT_DIR$/chatbot/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/urls.py" afterPath="$PROJECT_DIR$/chatbot/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chatbot/views.py" afterPath="$PROJECT_DIR$/chatbot/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -702,7 +693,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490024450947</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="saving new user according to the chatbot info">
+      <created>1490130485015</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1490130485015</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
