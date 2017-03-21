@@ -15,20 +15,19 @@ name = ""
 answer3 = ""
 
 brief1 = []
-brief1.append({"question":"Great! What is your email address?"})
-brief1.append({"question":"Great! We are excited to work with you. What is the name of the company you are working with?"})
+brief1.append({"question":"Great to meet you! What is your email address?"})
+brief1.append({"question":"We are excited to work with you. What is the name of the company you are working with?"})
 brief1.append({"question":"Tell me a little bit about your project: What is the main objective?"})
 brief1.append({"question":"Nice, I'm excited to get started. Now, who is your target audience?"})
-brief1.append({"question":"When are you looking to have this project completed by? Keep in mind that for most projects we need around a month to get it just right for you."})
-brief1.append({"question":"Cool. Can\'t wait to work together. Let\'s speak about your project type:"})
-brief1.append({"question":"Yes! We love working on ... What format are you looking to have this in?"})
+brief1.append({"question":"We can target that audience. When are you looking to have this project completed by? Keep in mind that for most projects we need around a month to get it just right for you."})
+brief1.append({"question":"Yes! We love working on these types of projects. What format are you looking to have this in?"})
 brief1.append({"question":"Awesome. We are making note of that! Now let\'s get down to the details: can you describe your project\'s concept more in-depth?"})
-brief1.append({"question":"Noted! Is there anything specific you want to highlight?"})
+# brief1.append({"question":"Noted! Is there anything specific you want to highlight?"})
 brief1.append({"question":"Tell me about what you want your users to feel when they see your site?"})
-brief1.append({"question":"Voila! Which of these photos best resonates?"})
-brief1.append({"question":"Great. Now upload (by drag and dropping) any files you want to include for us?"})
-brief1.append({"question":"We are really excited to speak with you! Now that we got know your needs a little better, let\'s schedule a time to discuss this brief."})
-brief1.append({"question":"We are all set to chat. You\'ll get an email confirmation for our appointment to connect at ... Looking forward to it."})
+# brief1.append({"question":"Voila! Which of these photos best resonates?"})
+# brief1.append({"question":"Great. Now upload (by drag and dropping) any files you want to include for us?"})
+brief1.append({"question":"We are really excited to speak with you! Now that we got know your needs a little better, let\'s schedule a time to discuss this brief. Please enter the date and time that works best for you?"})
+brief1.append({"question":"We are all set to chat. You\'ll get an email confirmation for our appointment. Looking forward to it. Please click on the download button to the right to save your brief!"})
 
 answerArr = ["objective","audience","timeline","format","concept","detail","feeling","schedule"]
 def index(request):
@@ -94,10 +93,9 @@ def chat (request):
         a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
         a.schedule = msg
         a.save()
-        currentQuestion=0
 
 
-
+    print("current q:",currentQuestion)
     return HttpResponse(json.dumps({"msg": brief1[currentQuestion]["question"], "user_id":user_id}), content_type="application/json")
 
 
@@ -111,9 +109,6 @@ def your_name(command):
     else:
         info['your_name'] = command
     return "Great to meet you, {}. Are you ready to get started? ".format(info['your_name'])
-
-
-
 
 
 def analyze_command(command):
@@ -134,3 +129,12 @@ def analyze_command(command):
         return your_name(command), "dancing"
 
     return "Hmmm, I'm not that smart of a robot yet. Let's try again!", "confused"
+
+def brief (request):
+    user_id = request.POST.get('user_id')
+    # answers=Answer.objects.filter(user_id=User.objects.get(pk=user_id))
+    answers=Answer.objects.filter(user_id=user_id)
+
+    print(answers.values())
+
+    return render(request,'creative.html',{'answers':answers},{'questions':brief1})

@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <h1>Creativeeeee</h1>
+    <link rel="stylesheet" type="text/css"
+            href="{% static 'css/style.css' %}" />
+    <title>Creative Brief</title>
+  </head>
+  <body>
+    <h1>Creative Brief</h1>
+    {% for q in questions %}
+      <p>{{ q }}</p>
+      {% if count == 1 %}
+          {{ answers.user_name }}
+        <p></p>
+      {% else %}
+        <p>{{ brief.answer }}</p>
+      {% endif %}
+    {% endfor %}
+  </body>
+</html>

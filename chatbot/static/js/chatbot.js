@@ -12,7 +12,7 @@ ChatBot.speechConfig;
 ChatBot.speechEnabled = true;
 
 ChatBot.currentQuestion = 0;
-ChatBot.briefLength = 13;
+ChatBot.briefLength = 10;
 
 //TODO: remove for production
 ChatBot.debugMode = true;
@@ -61,38 +61,32 @@ ChatBot.bindUserActions = function () {
     $(".send-button").unbind("click").bind("click", function (e) {
         ChatBot.sendMessage();
     });
-
-    //Mute button will toggle the speechEnabled indicator (when set to false the speak method will not be called)
-    $("#mute-btn").unbind("click").bind("click", function (e) {
-        $(this).toggleClass("on");
-        ChatBot.speechEnabled = $(this).is(".on") ? false : true;
-    });
 };
 
-//This function calls the image
-// ChatBot.showImage = function (){
-//     var previewPhoto = $("<div/>")
-//         .addClass("Botphoto")
-//         .attr("id", "smallBot");
-//
-//     var botIcon = $("<div/>")
-//         .addClass("botPic")
-//         // .attr("id", "buzzPic");
-//     $(previewPhoto).append(botIcon);
-//     // $(".chat-screen").append(previewPhoto);
-//     botIcon.html('<img src="./static/images/buzzbotlogo.png" height="64px" width="64px">');
-//     return '<img src="./static/images/buzzbotlogo.png" height="64px" width="64px">';
-//
-// };
-//
-// ChatBot.showImage();
+
+    //     ChatBot.getBrief = function () {
+    //     }
+    //     $(".download-button").unbind("click").bind("click", function (e) {
+    //     $.post("/brief", {"user_id":ChatBot.userId}, function (result) {
+    //         console.log(result);
+    //         // if (typeof result != "undefined" && "msg" in result) {
+    //         //     console.log('callback post' + ChatBot.userId)
+    //         // } else {
+    //         //     //The server did not erred but we got an empty result (handling as error)
+    //         //     ChatBot.handleServerError("No result");
+    //         // }
+    // });
+    // });
+
+
+// $('#myModal').modal(options)
 
 
 //Moving the progress bar forward with each question answered
 ChatBot.move = function () {
     var elem = $("#myBar");
     var width = 1;
-    var id = setInterval(frame, 14);
+    var id = setInterval(frame, 11);
 
     function frame() {
         if (width >= 100) {
@@ -106,40 +100,53 @@ ChatBot.move = function () {
 
 //Moving percentage with animation
  ChatBot.percentageCalc = function () {
-    var calcElem = $("#myChange");
-    var animator = new PercentageAnimator();
-       var timerAnim = new timer ();
-    animator.curPercentage = 0;
-    animator.animate(100);
-}
+     var calcElem = $("#myChange");
+     var startNum = 0;
+     var myid = animator(PercentageAnimator, 14);
 
-function timer () {
-    if (animator.curPercentage < animator.targetPercentage) {
-        animator.curPercentage += 1;
-    } else if (animator.curPercentage > animator.targetPercentage) {
-        animator.curPercentage -= 1;
-    }
+     function PercentageAnimator() {
+         if (startNum >= 100) {
+             clearInterval(myid);
+         } else {
+             startNum++;
+             calcElem.startNum = startNum + '%';
+         }
+     }
+ };
 
-    $(animator.outputSelector).text(animator.curPercentage + "%");
-
-    if (animator.curPercentage != animator.targetPercentage) {
-        setTimeout(timer, animator.animationSpeed)
-    }
-}
-
-function PercentageAnimator () {
-    this.animationSpeed = 80;
-    this.curPercentage = 0;
-    this.targetPercentage = 0;
-    this.outputSelector = ".countPercentage";
-
-    this.animate = function (percentage) {
-        this.targetPercentage = percentage;
-        setTimeout(timer, this.animationSpeed);
-    };
-
-    $("myChange").animator.curPercentage;
-}
+//     var animator = new PercentageAnimator();
+//     var timerAnim = new timer ();
+//     animator.curPercentage = 0;
+//     animator.animate(100);
+// }
+//
+// function timer () {
+//     if (animator.curPercentage < animator.targetPercentage) {
+//         animator.curPercentage += 1;
+//     } else if (animator.curPercentage > animator.targetPercentage) {
+//         animator.curPercentage -= 1;
+//     }
+//
+//     $(animator.outputSelector).text(animator.curPercentage + "%");
+//
+//     if (animator.curPercentage != animator.targetPercentage) {
+//         setTimeout(timer, animator.animationSpeed)
+//     }
+// }
+//
+// function PercentageAnimator () {
+//     this.animationSpeed = 80;
+//     this.curPercentage = 0;
+//     this.targetPercentage = 100;
+//     this.outputSelector = ".countPercentage";
+//
+//     this.animate = function (percentage) {
+//         this.targetPercentage = percentage;
+//         setTimeout(timer, this.animationSpeed);
+//     };
+//
+//     $("myChange").animator.curPercentage;
+// }
 
 //Initializeing HTML5 speech synthesis config
 ChatBot.initSpeechConfig = function () {
@@ -197,16 +204,28 @@ ChatBot.write = function (message, sender) {
     }
     var image;
     if (sender == "Buzzbot"){
-        image = '<div class = "buzzIcon"><img src="./static/images/BuzzbotIcon.png" height="64px" width="64px"></div>'
+        image = '<div class = "buzzIcon"><img src="./static/images/buzzicon.png" height="64px" width="64px"></div>'
+        var chatScreen = $(".chat-screen");
+        sender = $("<span />").addClass("sender").addClass(sender).html(image);
+        var msgContent = $("<span />").addClass("msg").text(message);
+        var newLine = $("<div />").addClass("msg-row Buzzbot");
+        chatScreen.append(newLine);
+        newLine.before(sender).append(msgContent);
     }else{
-        image = '<img src="./static/images/buzzbotlogo.png" height="64px" width="64px">'
+        image = '<div class = "allieIcon"></div><img src="./static/images/allieicon.png" height="64px" width="64px"></div>'
+        var chatScreen = $(".chat-screen");
+        sender = $("<span />").addClass("sender").addClass(sender).html(image);
+        var msgContent = $("<span />").addClass("msg").text(message);
+        var newLine = $("<div />").addClass("msg-row me");
+        chatScreen.append(newLine);
+        newLine.before(sender).append(msgContent);
     }
-    var chatScreen = $(".chat-screen");
-    sender = $("<span />").addClass("sender").addClass(sender).html(image);
-    var msgContent = $("<span />").addClass("msg").text(message);
-    var newLine = $("<div />").addClass("msg-row");
-    chatScreen.append(newLine);
-    newLine.before(sender).append(msgContent);
+    // var chatScreen = $(".chat-screen");
+    // sender = $("<span />").addClass("sender").addClass(sender).html(image);
+    // var msgContent = $("<span />").addClass("msg").text(message);
+    // var newLine = $("<div />").addClass("msg-row");
+    // chatScreen.append(newLine);
+    // newLine.before(sender).append(msgContent);
 };
 
 //Setting boto's current animation according to the server response
@@ -307,3 +326,6 @@ $(function() {
 
 
 });
+
+
+

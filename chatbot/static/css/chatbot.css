@@ -61,16 +61,6 @@ body{
     margin-top: 30px;
 }
 
-.chat-screen .sender{
-	color:red;
-    margin-right: 10px;
-}
-
-.chat-screen .sender.boto{
-	color:blue;
-}
-
-
 .chat-input{
     font-size: 20px;
     border: 4px solid #FFEC13;
@@ -145,7 +135,8 @@ body{
 .download-button{
 	background-color:#FFEC13;
     color: #000000;
-    position: center;
+    font: 14px Roboto;
+    /*position: center;*/
     margin-left: 75px;
     margin-top: 100px;
     border: solid 2px #FFEC13;
@@ -171,23 +162,69 @@ body{
     text-align: center;
 }
 
-.msg-row {
+.msg-row{
     padding: 10px;
     background-color: #74C8F3;
     border-radius: 25px;
     direction: ltr;
 }
 
-.msg-row. sender.me {
-    padding: 10px;
-    background-color: #ADDEF4;
-    border-radius: 25px;
+/*.msg-row. sender.me {*/
+    /*padding: 10px;*/
+    /*background-color: #ADDEF4;*/
+    /*border-radius: 25px;*/
+    /*direction: rtl;*/
+/*}*/
+
+.buzzIcon{
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.AllieIcon{
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
     direction: rtl;
 }
 
-.msg-row {
-    margin-bottom: 20px;
+#myChange{
+    font: 30px Roboto;
+    color: black;
 }
 
-.buzzIcon{
+#printbutton{
+    background: #2E7BB7;
+    border: 0px;
+}
+
+#myModalLabel{
+    font: 18px Roboto;
+}
+
+.me{
+    float: right;
+}
+
+.buzzbot{
+    float: left;
+}
+
+.row-buzz {
+    background-color: red;
+    height: 70px;
+    width: 100%;
+    display: block;
+    direction: ltr;
+    position: relative;
+}
+
+.row-me {
+    background-color: blue;
+    height: 70px;
+    width: 100%;
+    display: block;
+    direction: rtl;
+    position: relative;
 }
