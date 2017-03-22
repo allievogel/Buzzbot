@@ -29,7 +29,7 @@ brief1.append({"question":"Tell me about what you want your users to feel when t
 brief1.append({"question":"We are really excited to speak with you! Now that we got know your needs a little better, let\'s schedule a time to discuss this brief. Please enter the date and time that works best for you?"})
 brief1.append({"question":"We are all set to chat. You\'ll get an email confirmation for our appointment. Looking forward to it. Please click on the download button to the right to save your brief!"})
 
-answerArr = ["objective","audience","timeline","format","concept","detail","feeling","schedule"]
+answerArr = ["objective","audience","timeline","format","concept","desc","feeling","schedule"]
 def index(request):
     your_name("")
     return render (request, 'index.html')
@@ -76,23 +76,28 @@ def chat (request):
         a.save()
     elif currentQuestion==7:
         a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
-        a.concept= msg
+        a.concept=msg
         a.save()
+        print('concept'+str(msg))
 
     elif currentQuestion == 8:
         a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
-        a.detail = msg
+        a.desc = msg
         a.save()
+        print('desc' + str(msg))
 
     elif currentQuestion == 9:
         a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
         a.feeling = msg
         a.save()
+        print('feeling' + str(msg))
+        print("current q:", currentQuestion)
 
     elif currentQuestion == 10:
         a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
         a.schedule = msg
         a.save()
+        print('schedule' + str(msg))
 
 
     print("current q:",currentQuestion)

@@ -19,7 +19,7 @@ class Answer(models.Model):
     timeline = models.CharField(max_length=200)
     format = models.CharField(max_length=200)
     concept = models.CharField(max_length=200)
-    detail = models.CharField(max_length=200)
+    desc = models.CharField(max_length=200)
     feeling = models.CharField(max_length=200)
     schedule = models.CharField(max_length=200)
 

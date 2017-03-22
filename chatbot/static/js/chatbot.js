@@ -71,8 +71,8 @@ ChatBot.bindUserActions = function () {
             $('#audience').text(result.answers.audience);
             $('#timeline').text(result.answers.timeline);
             $('#format').text(result.answers.format);
+            $('#detail').text(result.answers.desc);
             $('#concept').text(result.answers.concept);
-            $('#detail').text(result.answers.detail);
             $('#feeling').text(result.answers.feeling);
             $('#schedule').text(result.answers.schedule);
 
