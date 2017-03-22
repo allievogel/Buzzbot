@@ -80,20 +80,15 @@ def chat (request):
         a.save()
         print('concept'+str(msg))
 
-    elif currentQuestion == 8:
-        a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
-        a.desc = msg
-        a.save()
-        print('desc' + str(msg))
 
-    elif currentQuestion == 9:
+    elif currentQuestion == 8:
         a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
         a.feeling = msg
         a.save()
         print('feeling' + str(msg))
-        print("current q:", currentQuestion)
 
-    elif currentQuestion == 10:
+
+    elif currentQuestion ==9:
         a = Answer.objects.get(user_id=User.objects.get(pk=user_id))
         a.schedule = msg
         a.save()
