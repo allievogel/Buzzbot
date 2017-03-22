@@ -9,7 +9,7 @@ ChatBot.animationTimeout;
 ChatBot.speechConfig;
 //Will be set to false automatically whan the browser does not support speech synthesis
 //Or when the user clicks the mute button
-ChatBot.speechEnabled = true;
+ChatBot.speechEnabled = false;
 
 ChatBot.currentQuestion = 0;
 ChatBot.briefLength = 10;
@@ -61,6 +61,31 @@ ChatBot.bindUserActions = function () {
     $(".send-button").unbind("click").bind("click", function (e) {
         ChatBot.sendMessage();
     });
+
+    $("#downloadNow").bind("click", function (e) {
+        console.log(ChatBot.userId)
+        $.post("/brief", {"user_id":ChatBot.userId}, function (result) {
+            console.log(result.answers);
+            console.log(result.answers.objective);
+            $('#objective').text(result.answers.objective);
+            $('#audience').text(result.answers.audience);
+            $('#timeline').text(result.answers.timeline);
+            $('#format').text(result.answers.format);
+            $('#concept').text(result.answers.concept);
+            $('#detail').text(result.answers.detail);
+            $('#feeling').text(result.answers.feeling);
+            $('#schedule').text(result.answers.schedule);
+
+
+            audience=result.audience;
+            concept=result.concept;
+
+
+
+                        // $("#modal_text").html(result);
+        })
+
+    });
 };
 
 
@@ -86,33 +111,44 @@ ChatBot.bindUserActions = function () {
 ChatBot.move = function () {
     var elem = $("#myBar");
     var width = 1;
-    var id = setInterval(frame, 11);
+    var counter=0;
+    var id = setInterval(frame, 10);
 
     function frame() {
         if (width >= 100) {
             clearInterval(id);
+             // $('#percent').innerHTML=0;
+
         } else {
             width++;
+             $('#percent').text()='counter*10+"%"';
             elem.style.width = width + '%';
+            counter++;
         }
     }
 };
 
 //Moving percentage with animation
- ChatBot.percentageCalc = function () {
-     var calcElem = $("#myChange");
-     var startNum = 0;
-     var myid = animator(PercentageAnimator, 14);
 
-     function PercentageAnimator() {
-         if (startNum >= 100) {
-             clearInterval(myid);
-         } else {
-             startNum++;
-             calcElem.startNum = startNum + '%';
-         }
-     }
- };
+//  ChatBot.percentageCalc = function () {
+//     var count = 0
+//
+//     $('#test').onclick = function perCent(){
+//     var inp = document.getElementById("text").value;
+//
+//     if( inp === ""){
+//     alert("You need some text");
+//     return
+//
+// }
+//     document.getElementById("percent").innerHTML ='';
+//     count += 10;
+//     document.getElementById("percent").innerHTML = count + "%";
+//
+//     if(count > 100)
+//     document.getElementById("percent").innerHTML = 100 + "%";
+// }
+//  };
 
 //  // getting percentage to move
 //  ChatBot.modify_qty = function (val) {
@@ -185,9 +221,10 @@ ChatBot.write = function (message, sender) {
     if (sender == "Buzzbot"){
         image = '<div class = "buzzIcon"><img src="./static/images/buzzicon.png" height="64px" width="64px"></div>'
         var chatScreen = $(".chat-screen");
+        chatScreen.scrollBottom = chatScreen.scrollHeight;
         sender = $("<span />").addClass("sender").addClass(sender).html(image);
         var msgContent = $("<span />").addClass("msg").text(message);
-        var newLine = $("<div />").addClass("msg-row Buzzbot");
+        var newLine = $("<div />").addClass("msg-row Buzzbot").css({"background-color": "#74C8F3", "margin-bottom": "20px"});
         chatScreen.append(newLine);
         newLine.before(sender).append(msgContent);
     }else{
@@ -195,7 +232,7 @@ ChatBot.write = function (message, sender) {
         var chatScreen = $(".chat-screen");
         sender = $("<span />").addClass("sender").addClass(sender).html(image);
         var msgContent = $("<span />").addClass("msg").text(message);
-        var newLine = $("<div />").addClass("msg-row me");
+        var newLine = $("<div />").addClass("msg-row me").css({"background-color": "#ADDEF4", "margin-top": "15px"});
         chatScreen.append(newLine);
         newLine.before(sender).append(msgContent);
     }
@@ -244,6 +281,17 @@ ChatBot.debugPrint = function (msg) {
         console.log("CHATBOT DEBUG: " + msg)
     }
 };
+
+// trying to bring data from backend to frontend
+
+// def brief (request):
+//     user_id = request.POST.get('user_id')
+//     # answers=Answer.objects.filter(user_id=User.objects.get(pk=user_id))
+//     answers=Answer.objects.filter(user_id=user_id)
+//
+//     print(answers.values())
+//
+//     return render(request,'index.html',{'answers':answers},{'questions':brief1})
 
 ChatBot.start();
 

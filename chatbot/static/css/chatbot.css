@@ -1,15 +1,11 @@
 body{
     background-image:url('../images/blue-geometric-wallpaper-10.png');
     font-family: 'Roboto', Georgia, sans-serif;
+    background-color: #FFFFFF;
 }
 
 html{
     padding: 20px;
-}
-
-body{
-    background-color: #FFFFFF;
-    font-family: 'Roboto', Georgia, sans-serif;
 }
 
 .buzzbot-title{
@@ -164,26 +160,19 @@ body{
 
 .msg-row{
     padding: 10px;
-    background-color: #74C8F3;
     border-radius: 25px;
     direction: ltr;
+    border: 20px;
 }
 
-/*.msg-row. sender.me {*/
-    /*padding: 10px;*/
-    /*background-color: #ADDEF4;*/
-    /*border-radius: 25px;*/
-    /*direction: rtl;*/
-/*}*/
-
 .buzzIcon{
-    margin: 0px;
+    margin-top: 20px;
     padding: 0px;
     display: inline-block;
 }
 
-.AllieIcon{
-    margin: 0px;
+.allieIcon{
+    margin-top: 20px;
     padding: 0px;
     display: inline-block;
     direction: rtl;
@@ -211,20 +200,29 @@ body{
     float: left;
 }
 
-.row-buzz {
-    background-color: red;
-    height: 70px;
+.modal-body{
+    height: 100%;
     width: 100%;
-    display: block;
-    direction: ltr;
-    position: relative;
 }
 
-.row-me {
-    background-color: blue;
-    height: 70px;
-    width: 100%;
-    display: block;
-    direction: rtl;
-    position: relative;
+.title_text{
+  font: 25px 'Roboto', Georgia, sans-serif;
+  color:  #74C8F3;
+  margin: 15px;
+}
+
+.basic_menu{
+   font: 18px 'Roboto', Georgia, sans-serif;
+   color:  #2E7BB7;
+   margin: 15px;
+}
+
+.write{
+    font: 14px 'Roboto', Georgia, sans-serif;
+    color:  black;
+}
+
+.text-text{
+    font: 14px 'Roboto', Georgia, sans-serif;
+    color:  black;
 }

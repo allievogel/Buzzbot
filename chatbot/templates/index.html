@@ -38,7 +38,7 @@
                             <div class="progress">
                                 <div class="progress-bar" id="myBar" style="width: 0%;"></div>
                             </div>
-                                <div class="progress-text">Good Work!</br>You are <span id="myChange"></span> of the way there!</div>
+                                <div class="progress-text"><strong>Good Work!</strong></br>You are getting closer to your creative brief!</div>
                             </div>
                          <button type="button" class="btn btn-primary btn-lg download-button clickable" id="downloadNow" data-toggle="modal" data-target="#myModal">Download
                         </button>
@@ -47,8 +47,6 @@
             <!-- CHAT SCREEN -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <div class="chat-screen container">
-{#                            <div class="row row-me me">hi</div>#}
-{#                            <div class="row row-buzz buzzbot">bye</div>#}
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
@@ -62,9 +60,9 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class = "container">
                         <div class = "row">
-                      <input title="Chat input" class="chat-input col-xl-6 col-lg-6 col-md-8 col-sm-8 col-xs-8"/>
+                      <input title="Chat input" class="chat-input col-xl-6 col-lg-6 col-md-8 col-sm-8 col-xs-8" id="text"/>
                          <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                            <button type="button" class="btn btn-default col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 send-button clickable">Go</button>
+                            <button type="button" class="btn btn-default col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3 send-button clickable" id="test">Send</button>
                        </div>
                        </div>
                     </div>
@@ -79,11 +77,27 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Buzzbot Brief</h4>
+        <h4 class="modal-title" id="myModalLabel"><img src="{% static 'images/Buzzbrief.png' %}" alt="buzz"></h4>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
+
+      <div class="modal-body" id="modal_text">
+            <div class="title_text">Name:</br><span class = "write">Hanan Gelbendorf</span><span id="username"></span></div>
+            <div class="title_text" >Email:</br><span class = "write">Hanan@buzzhunter.com</span><span id="email"></span></div>
+            <div class="title_text" >Company Name:</br><span class = "write">BuzzHunter</span><span id="companyName"></span></div>
+
+            <div class="basic_menu">Audience:</br><span id="audience" class = text-text></span></div>
+            <div class="basic_menu">Timeline:</br><span id="timeline" class = text-text></span></div>
+            <div class="basic_menu">Format:</br><span id="format" class = text-text></span></div>
+            <div class="basic_menu">Concept:</br><span id="concept" class = text-text></span></div>
+            <div class="basic_menu">Detail:</br><span id="detail" class = text-text></span></div>
+            <div class="basic_menu">Feeling:</br><span id="feeling" class = text-text></span></div>
+            <div class="basic_menu">Schedule:</br><span id="schedule" class = text-text></span></div>
+
+           </div>
+
+
+
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="printbutton">Print</button>

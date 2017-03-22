@@ -130,11 +130,16 @@ def analyze_command(command):
 
     return "Hmmm, I'm not that smart of a robot yet. Let's try again!", "confused"
 
-def brief (request):
+def brief(request):
+
+    print("this is working")
     user_id = request.POST.get('user_id')
+    print(user_id)
     # answers=Answer.objects.filter(user_id=User.objects.get(pk=user_id))
-    answers=Answer.objects.filter(user_id=user_id)
+    answers=Answer.objects.filter(user_id=User.objects.get(pk=user_id)).values()[0]
+    print("ans",answers)
+    print("bre",brief1)
 
-    print(answers.values())
+    return HttpResponse(json.dumps({'answers': answers},{'questions': brief1}), content_type="application/json")
 
-    return render(request,('.modal-body'),{'answers':answers},{'questions':brief1})
+    # return render(request,'index.html',{'answers':answers},{'questions':brief1})
