@@ -137,4 +137,4 @@ def brief (request):
 
     print(answers.values())
 
-    return render(request,'creative.html',{'answers':answers},{'questions':brief1})
+    return render(request,('.modal-body'),{'answers':answers},{'questions':brief1})

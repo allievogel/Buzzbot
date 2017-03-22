@@ -114,39 +114,18 @@ ChatBot.move = function () {
      }
  };
 
-//     var animator = new PercentageAnimator();
-//     var timerAnim = new timer ();
-//     animator.curPercentage = 0;
-//     animator.animate(100);
-// }
+//  // getting percentage to move
+//  ChatBot.modify_qty = function (val) {
+//     var qty = $('#qty').value;
+//     var new_qty = parseInt(qty,10) + val;
 //
-// function timer () {
-//     if (animator.curPercentage < animator.targetPercentage) {
-//         animator.curPercentage += 1;
-//     } else if (animator.curPercentage > animator.targetPercentage) {
-//         animator.curPercentage -= 1;
+//     if (new_qty < 0) {
+//         new_qty = 0;
 //     }
 //
-//     $(animator.outputSelector).text(animator.curPercentage + "%");
-//
-//     if (animator.curPercentage != animator.targetPercentage) {
-//         setTimeout(timer, animator.animationSpeed)
-//     }
-// }
-//
-// function PercentageAnimator () {
-//     this.animationSpeed = 80;
-//     this.curPercentage = 0;
-//     this.targetPercentage = 100;
-//     this.outputSelector = ".countPercentage";
-//
-//     this.animate = function (percentage) {
-//         this.targetPercentage = percentage;
-//         setTimeout(timer, this.animationSpeed);
-//     };
-//
-//     $("myChange").animator.curPercentage;
-// }
+//     $('#qty').value = new_qty;
+//     return new_qty;
+// };
 
 //Initializeing HTML5 speech synthesis config
 ChatBot.initSpeechConfig = function () {
