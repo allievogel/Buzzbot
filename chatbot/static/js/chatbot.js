@@ -67,6 +67,9 @@ ChatBot.bindUserActions = function () {
         $.post("/brief", {"user_id":ChatBot.userId}, function (result) {
             console.log(result.answers);
             console.log(result.answers.objective);
+            // $('#name').text(result.answers.user_name);
+            // $('#email').text(result.answers.email);
+            // $('#companyname').text(result.answers.company_name);
             $('#objective').text(result.answers.objective);
             $('#audience').text(result.answers.audience);
             $('#timeline').text(result.answers.timeline);
@@ -79,31 +82,10 @@ ChatBot.bindUserActions = function () {
             audience=result.audience;
             concept=result.concept;
 
-
-
-                        // $("#modal_text").html(result);
         })
 
     });
 };
-
-
-    //     ChatBot.getBrief = function () {
-    //     }
-    //     $(".download-button").unbind("click").bind("click", function (e) {
-    //     $.post("/brief", {"user_id":ChatBot.userId}, function (result) {
-    //         console.log(result);
-    //         // if (typeof result != "undefined" && "msg" in result) {
-    //         //     console.log('callback post' + ChatBot.userId)
-    //         // } else {
-    //         //     //The server did not erred but we got an empty result (handling as error)
-    //         //     ChatBot.handleServerError("No result");
-    //         // }
-    // });
-    // });
-
-
-// $('#myModal').modal(options)
 
 
 //Moving the progress bar forward with each question answered
@@ -120,7 +102,6 @@ ChatBot.move = function () {
 
         } else {
             width++;
-             $('#percent').text()='counter*10+"%"';
             elem.style.width = width + '%';
             counter++;
         }
@@ -220,7 +201,7 @@ ChatBot.write = function (message, sender) {
     if (sender == "Buzzbot"){
         image = '<div class = "buzzIcon"><img src="./static/images/buzzicon.png" height="64px" width="64px"></div>'
         var chatScreen = $(".chat-screen");
-        chatScreen.scrollBottom = chatScreen.scrollHeight;
+        chatScreen.scrollTop = chatScreen.scrollHeight;
         sender = $("<span />").addClass("sender").addClass(sender).html(image);
         var msgContent = $("<span />").addClass("msg").text(message);
         var newLine = $("<div />").addClass("msg-row Buzzbot").css({"background-color": "#74C8F3", "margin-bottom": "20px"});
@@ -235,12 +216,6 @@ ChatBot.write = function (message, sender) {
         chatScreen.append(newLine);
         newLine.before(sender).append(msgContent);
     }
-    // var chatScreen = $(".chat-screen");
-    // sender = $("<span />").addClass("sender").addClass(sender).html(image);
-    // var msgContent = $("<span />").addClass("msg").text(message);
-    // var newLine = $("<div />").addClass("msg-row");
-    // chatScreen.append(newLine);
-    // newLine.before(sender).append(msgContent);
 };
 
 //Setting boto's current animation according to the server response
